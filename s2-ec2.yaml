@@ -1,0 +1,32 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: EC2 creation template 
+Parameters: 
+  EnvironmentType: 
+    Type: String 
+    Default: Dev 
+    AllowedValues:
+      - Dev 
+      - PROD 
+Mappings:
+  RegionMap:
+    eu-north-1:
+      AMI: ami-056335ec4a8783947
+    us-east-1:
+      AMI: ami-0f3caa1cf4417e51b
+Conditions: 
+  IsProd: !Equals [ !Ref EnvironmentType, PROD ]
+Resources:
+  MyEC2: 
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: !FindInMap
+        - RegionMap
+        - !Ref "AWS::Region"
+        - AMI 
+      InstanceType: !If [IsProd, t2.small, t3.micro]  
+      Tags: 
+        - Key: Name 
+          Value: !Sub "Session-2-${EnvironmentType}-${AWS::Region}"
+       
+
+
