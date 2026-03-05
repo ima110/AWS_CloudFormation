@@ -14,19 +14,28 @@ Mappings:
     us-east-1:
       AMI: ami-0f3caa1cf4417e51b
 Conditions: 
-  IsProd: !Equals [ !Ref EnvironmentType, PROD ]
+  IsProd:
+    Fn::Equals:
+      - Ref: EnvironmentType
+      - PROD
 Resources:
   MyEC2: 
     Type: AWS::EC2::Instance
     Properties:
-      ImageId: !FindInMap
-        - RegionMap
-        - !Ref "AWS::Region"
-        - AMI 
-      InstanceType: !If [IsProd, t2.small, t3.micro]  
+      ImageId:
+        Fn::FindInMap:
+          - RegionMap
+          - Ref: AWS::Region
+          - AMI
+      InstanceType:
+        Fn::If:
+          - IsProd
+          - 't2.small'
+          - 't3.micro'
       Tags: 
         - Key: Name 
-          Value: !Sub "Session-2-${EnvironmentType}-${AWS::Region}"
+          Value:
+            fn::sub: "EC2-${AWS::Region}-${EnvironmentType}"
        
 
 
