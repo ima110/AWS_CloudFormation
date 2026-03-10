@@ -1,4 +1,4 @@
-## CloudFornation Templates
+## CrossStack folder
 
 The CrossStack folder contains two CloudFormation templates that are intended to be deployed as separate stacks so one can export values (for example networking outputs) and the other can import them:
 
