@@ -16,26 +16,8 @@ Deployment notes:
 - Deploy the network stack first so its Outputs are available to import.
 - Then deploy the app stack which consumes the exported values.
 
-Example (Bash) commands:
-```bash
-# Validate network template
-aws cloudformation validate-template --template-body file://CrossStack/network.yaml --region us-east-1
 
-# Deploy network stack
-aws cloudformation deploy \
-  --stack-name network-stack \
-  --template-file ./CrossStack/network.yaml \
-  --region us-east-1 \
-  --capabilities CAPABILITY_NAMED_IAM
-
-# Deploy app stack (after network-stack completes)
-aws cloudformation deploy \
-  --stack-name app-stack \
-  --template-file ./CrossStack/app.yaml \
-  --region us-east-1 \
-  --capabilities CAPABILITY_NAMED_IAM
-
- -  -- bash ```
+ 
 
 ## NestedStack folder
 
