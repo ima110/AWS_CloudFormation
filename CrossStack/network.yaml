@@ -1,0 +1,14 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Network resouce"
+Resources:
+  MyVpc:
+    Type: "AWS::EC2::VPC"
+    Properties:
+      CidrBlock: 10.0.0.0/16
+Outputs: 
+  VpcId:
+    Description: "VPC ID" 
+    Value: 
+      Ref: MyVpc
+    Export:
+      Name: VpcId    
