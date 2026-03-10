@@ -1,4 +1,4 @@
-## CrossStack folder
+## CloudFornation Templates
 
 The CrossStack folder contains two CloudFormation templates that are intended to be deployed as separate stacks so one can export values (for example networking outputs) and the other can import them:
 
@@ -34,7 +34,7 @@ aws cloudformation deploy \
   --template-file ./CrossStack/app.yaml \
   --region us-east-1 \
   --capabilities CAPABILITY_NAMED_IAM
-
+bash```
 
 ## NestedStack folder
 
