@@ -34,7 +34,8 @@ aws cloudformation deploy \
   --template-file ./CrossStack/app.yaml \
   --region us-east-1 \
   --capabilities CAPABILITY_NAMED_IAM
-bash```
+
+ -  -- bash ```
 
 ## NestedStack folder
 
