@@ -1,0 +1,7 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Main Stack Template'
+Resources:
+  MyVpcStack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: 'https://s3.amazonaws.com/my-cfn-template-780604191148/vpc-template.yaml'
